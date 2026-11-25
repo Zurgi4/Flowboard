@@ -1,0 +1,22 @@
+{
+  "name": "flowboard-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config demo/vite.config.ts",
+    "build": "vite build --config demo/vite.config.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^1.31.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.13"
+  }
+}

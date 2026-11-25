@@ -1,47 +1,24 @@
-# Training Hungary kampánytervező
+# Flowboard · Training Hungary
 
-Vizuális kampánytervező B2B marketingfolyamatokhoz. Piszkozatokat és élesnek jelölt kampányokat lehet létrehozni, a vásznon a lépések mozgathatók és összeköthetők. A lépésekhez felelős, állapot, célérték, tényleges érték és hivatkozás rendelhető.
+Kipróbálható, vizuális kampánytervező. A [nyilvános bemutató](https://zurgi4.github.io/Flowboard/) GitHub Pages-en fut; nincs szükség belépésre.
 
-## Jelenlegi funkciók
+## Mit lehet kipróbálni?
 
-- B2B leadgenerálás, webinárium, LinkedIn kapcsolatépítés és üres sablon
-- Szerkeszthető kampányvászon és lépéskapcsolatok
-- Piszkozat, éles, szünetelő és archivált kampányállapot
-- Kampányok mentése Cloudflare D1 adatbázisba, bejelentkezett felhasználónként külön
-- A KPI-értékek jelenleg kézi adatok. A Meta és PartnerCRM automatikus szinkronja még nincs bekötve.
+- Kampány létrehozása B2B, webinárium, LinkedIn vagy üres sablonból
+- Lépések hozzáadása, mozgatása és összekötése a folyamatábrán
+- Felelősök, állapotok, célértékek, tényleges értékek és URL-ek szerkesztése
+- Piszkozatok, élesnek jelölt és szünetelő kampányok áttekintése
+- Mentés, másolás és törlés
 
-Az **éles** állapot nyilvántartási jelölés; nem indít és nem módosít hirdetést. A forráskód nem tartalmaz valódi ügyfélkampányokat vagy hozzáférési kulcsokat.
+A bemutató két **minta**kampánnyal indul. A módosítások csak az adott böngésző helyi tárhelyén maradnak meg, így minden látogató önállóan próbálhatja ki. Nincs közös adatbázis, CRM- vagy Meta-integráció; az „éles” állapot itt nem indít hirdetést. A bemutató nem tartalmaz valódi ügyféladatot.
 
-## Kipróbálható bemutató
+## Fejlesztés
 
-A `docs/` mappa a GitHub Pages-en futó, kattintható Flowboard. Két egyértelműen jelölt mintakampánnyal indul. Új kampányt is létre lehet hozni, lépéseket és kapcsolatokat szerkeszteni, majd menteni.
-
-Ebben a változatban a mentés **csak az adott böngészőben** történik, ezért Zalán saját módosításai nem jelennek meg Rajmundnál, és fordítva. Valódi CRM-adat, Meta-művelet és közös adatbázis nincs a nyilvános demóban.
-
-A statikus bemutató újraépítése:
+A szerkeszthető React-forrás a `demo/` mappában, a kampánymodell a `lib/` mappában van. A `docs/` a GitHub Pages-re előre lefordított változat.
 
 ```bash
-npm ci
+npm install
 npx vite build --config demo/vite.config.ts
 ```
 
-## Forrás letöltése
-
-A GitHub oldalán a **Code → Download ZIP** menüponttal tölthető le a teljes forrás. Az eredeti, adatbázisos alkalmazás szervert igényel; a GitHub Pages a külön `docs/` bemutatót szolgálja ki.
-
-## Helyi fejlesztés
-
-Node.js 22.13+ szükséges.
-
-```bash
-npm ci
-npm run build
-node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_sparkling_menace.sql
-npm run dev
-```
-
-A helyi bejelentkezés és az éles Sites-környezet eltérő. A telepítési beállításokat a `.openai/hosting.json` tartalmazza; a benne lévő projektazonosító a már létező privát oldalhoz tartozik. Másik oldal létrehozásakor új azonosító szükséges.
-
-## Technológia
-
-React, TypeScript, Vinext, Cloudflare Workers és D1. A projekt a ChatGPT Sites tárhelyen futó változat forrásából készült.
+A GitHub oldalán a **Code → Download ZIP** menüponttal letölthető a teljes bemutatóprojekt. A későbbi, közös adatbázisos és integrált verzió külön fejlesztési lépés.
